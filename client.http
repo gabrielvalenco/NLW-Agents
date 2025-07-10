@@ -6,4 +6,5 @@ GET {{baseUrl}}/health
 
 ###
 
-# Get roomsGET {{baseUrl}}/rooms
+# Get rooms
+GET {{baseUrl}}/rooms
