@@ -13,6 +13,9 @@ return {
             name: f.companyName(),
             description: f.loremIpsum(),
         }
+    },
+    questions: {
+        count: 20,
     }
 }
 })

@@ -2,9 +2,49 @@
 @baseUrl = http://localhost:3333
 
 # Health check
+@name = healthCheck
 GET {{baseUrl}}/health
 
 ###
 
 # Get rooms
+@name = getRooms
 GET {{baseUrl}}/rooms
+
+###
+
+# STEP 1: Create a room first
+# Execute this request first and save the response
+@name = createRoom
+POST {{baseUrl}}/rooms
+accept: application/json
+Content-Type: application/json
+
+{
+    "name": "Room name",
+    "description": "Room description"
+}
+
+###
+
+# STEP 2: After creating a room, manually copy the roomId from the response and paste it below
+# Replace the placeholder with an actual UUID from a created room
+@roomId = replace-with-actual-room-id
+
+###
+
+# Get room questions
+@name = getRoomQuestions
+GET {{baseUrl}}/rooms/{{roomId}}/questions
+
+###
+
+# Create question
+@name = createQuestion
+POST {{baseUrl}}/rooms/{{roomId}}/questions
+accept: application/json
+Content-Type: application/json
+
+{
+    "question": "What is the concept of X inside Y?"
+}
